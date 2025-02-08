@@ -3,6 +3,8 @@
 import { UploadDropzone } from "@/lib/uploadthing"
 import { CloudCog, Files, XIcon } from "lucide-react"
 
+import styles from './ImageUpload.module.css'
+
 
 interface ImageUploadProps {
   onChange: (url: string) => void
@@ -28,6 +30,7 @@ const ImageUpload = ({ endpoint, onChange, value, }: ImageUploadProps) => {
 
   return (
     <UploadDropzone
+    className={styles["upload-icon"]}
       endpoint={endpoint}
       onClientUploadComplete={res => {
         onChange(res?.[0].url)
