@@ -125,6 +125,6 @@ model Notification {
 
 enum NotificationType {
   LIKE 
-  COMMNET
+  COMMENT
   FOLLOW
 }
