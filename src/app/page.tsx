@@ -19,9 +19,7 @@ async function Home() {
           {
             posts.map(post => (
               <PostCard key={post.id} post={post} dbUserId={userId} />
-      
             ))
-
           }
         </div>
       </div>
