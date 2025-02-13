@@ -151,14 +151,6 @@ export async function updateUserProfile(formData: FormData) {
     const location = formData.get("location") as string;
     const webSite = formData.get("webSite") as string;
 
-    console.log("==============================")
-    console.log("==============================")
-    console.log("==============================")
-    console.log("Updating profile: ", { name, bio, location, webSite });
-    console.log("==============================")
-    console.log("==============================")
-    console.log("==============================")
-
     const user = await prisma.user.update({
       where: {
         clerkId,

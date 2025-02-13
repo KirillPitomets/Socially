@@ -36,23 +36,33 @@ export async function syncUser() {
 }
 
 export async function getUserByClerkId(clerkId: string) {
-  return await prisma.user.findUnique({
-    where: { clerkId },
-    include: {
-      _count: { select: { followers: true, following: true, posts: true } },
-    },
-  });
+  try {
+    return await prisma.user.findUnique({
+      where: { clerkId },
+      include: {
+        _count: { select: { followers: true, following: true, posts: true } },
+      },
+    });
+  } catch (err) {
+    console.error("Error fetching user by clerkId: ", err);
+    return null;
+  }
 }
 
 export async function getDbUserId() {
-  const { userId: clerkId } = await auth();
-  if (!clerkId) return null;
+  try {
+    const { userId: clerkId } = await auth();
+    if (!clerkId) return null;
 
-  const user = await getUserByClerkId(clerkId);
+    const user = await getUserByClerkId(clerkId);
 
-  if (!user) throw new Error("User not found");
+    if (!user) throw new Error("User not found");
 
-  return user.id;
+    return user.id;
+  } catch (error) {
+    console.log("Error in getDbUserId", error);
+    return null;
+  }
 }
 
 export async function getRandomUsers() {
