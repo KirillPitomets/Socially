@@ -30,7 +30,7 @@ const ImageUpload = ({ endpoint, onChange, value, }: ImageUploadProps) => {
 
   return (
     <UploadDropzone
-    className={styles["upload-icon"]}
+      className={styles["upload-icon"]}
       endpoint={endpoint}
       onClientUploadComplete={res => {
         onChange(res?.[0].url)

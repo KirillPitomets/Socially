@@ -14,7 +14,9 @@ async function Sidebar() {
   if (!authUser) return <UnAuthticatedSidebar />
 
   const user = await getUserByClerkId(authUser.id);
+
   if (!user) return null
+
   return (
     <div className="sticky top-20">
       <Card>

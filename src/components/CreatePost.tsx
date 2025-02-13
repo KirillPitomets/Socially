@@ -24,8 +24,9 @@ function CreatePost() {
 		setIsPosting(true)
 
 		try {
-			const res = await createPost(content, imageUrl)
-			if (res.success) {
+			const post = await createPost(content, imageUrl)
+			 
+			if (post && post.success) {
 				setContent("")
 				setImageUrl("")
 				setIsPosting(false)
